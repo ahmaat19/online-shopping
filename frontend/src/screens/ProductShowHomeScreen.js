@@ -1,18 +1,19 @@
 import React from 'react'
 import { FaInfo } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import placeHolder from '../no-image-available.webp'
 
 const ProductShowHomeScreen = ({ currentItems }) => {
   return (
     <div className='row'>
       {currentItems &&
         currentItems.map((item) => (
-          <div className='col-lg-2 col-md-3 col-sm-6 col-12'>
+          <div key={item._id} className='col-lg-2 col-md-3 col-sm-6 col-12'>
             <div className='card text-center'>
               <Link to={`/cart/${item._id}`}>
                 <img
-                  src='https://mms-images.out.customink.com/mms/images/catalog/categories/148_large.jpg'
-                  alt=''
+                  src={item.image ? item.image.imagePath : placeHolder}
+                  alt='product image'
                   className='img-card-top img-fluid'
                 />{' '}
               </Link>

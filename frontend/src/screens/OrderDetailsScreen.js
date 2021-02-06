@@ -8,6 +8,7 @@ import Moment from 'react-moment'
 import moment from 'moment'
 import { FaPrint } from 'react-icons/fa'
 import { useReactToPrint } from 'react-to-print'
+import logo from '../logo.png'
 
 const OrderDetailsScreen = ({ match }) => {
   const componentRef = useRef()
@@ -49,7 +50,7 @@ const OrderDetailsScreen = ({ match }) => {
                   <Moment format='HH:mm:ss'>{moment(order.createdAt)}</Moment>
                 </li>
                 <li className='list-group-item text-center'>
-                  AMIIRA CLASSIC STYLE
+                  <img src={logo} alt='' style={{ height: '50px' }} />
                 </li>
                 <div className='cart-body px-3'>
                   <div className='cart-text'>

@@ -5,6 +5,7 @@ import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/productActions'
 import { createOrder } from '../actions/orderActions'
 import { FaTrash, FaCheckCircle } from 'react-icons/fa'
+import placeHolder from '../no-image-available.webp'
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id
@@ -63,29 +64,30 @@ const CartScreen = ({ match, location, history }) => {
 
     dispatch(createOrder(order))
   }
+  // console.log(cartItems)
 
   return (
     <div>
-      <h6 className='fw-light fs-3 text-center'>Shopping Cart</h6>
+      <h6 className='fw-light fs-3 text-center text-light'>Shopping Cart</h6>
       {cartItems.length === 0 ? (
-        <Message variant='danger'>
+        <Message variant='info'>
           Your cart is empty <Link to='/'> Go Back</Link>
         </Message>
       ) : (
         <div className='row'>
           <div className='col-lg-8 col-md-8 col-sm-12 col-12'>
             {cartItems.map((item) => (
-              <>
-                <div class='card mb-3'>
-                  <div class='row g-0'>
-                    <div class='col-md-4  text-center'>
+              <div key={item.product}>
+                <div className='card mb-3'>
+                  <div className='row g-0'>
+                    <div className='col-md-4  text-center'>
                       <img
-                        src='https://mms-images.out.customink.com/mms/images/catalog/categories/148_large.jpg'
+                        src={item.image ? item.image.imagePath : placeHolder}
                         alt=''
                         className='img-card-top img-fluid w-50'
                       />
                     </div>
-                    <div class='col-md-8 my-auto'>
+                    <div className='col-md-8 my-auto'>
                       <div className='card-body '>
                         <div className='row'>
                           <div className='col'>
@@ -136,7 +138,7 @@ const CartScreen = ({ match, location, history }) => {
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             ))}
           </div>
 

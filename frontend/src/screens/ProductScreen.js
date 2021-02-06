@@ -10,7 +10,7 @@ import {
 } from '../actions/productActions'
 import { confirmAlert } from 'react-confirm-alert'
 import { Confirm } from '../components/Confirm'
-import { FaTrash, FaEdit, FaSearch, FaPlus } from 'react-icons/fa'
+import { FaTrash, FaEdit, FaPlus } from 'react-icons/fa'
 import Pagination from '../components/Pagination'
 
 const ProductScreen = () => {
@@ -23,6 +23,7 @@ const ProductScreen = () => {
   const [costPrice, setCostPrice] = useState('')
   const [countInStock, setCountInStock] = useState('')
   const [search, setSearch] = useState('')
+  const [image, setImage] = useState('')
 
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
@@ -60,6 +61,7 @@ const ProductScreen = () => {
     setPrice('')
     setCostPrice('')
     setEdit(false)
+    setImage('')
   }
 
   useEffect(() => {
@@ -77,28 +79,18 @@ const ProductScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
 
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('category', category)
+    formData.append('image', image)
+    formData.append('price', price)
+    formData.append('brand', brand)
+    formData.append('costPrice', costPrice)
+    formData.append('countInStock', countInStock)
+
     edit
-      ? dispatch(
-          updateProduct({
-            id,
-            name,
-            brand,
-            category,
-            price,
-            costPrice,
-            countInStock,
-          })
-        )
-      : dispatch(
-          createProduct({
-            name,
-            brand,
-            category,
-            price,
-            costPrice,
-            countInStock,
-          })
-        )
+      ? dispatch(updateProduct(formData, id))
+      : dispatch(createProduct(formData))
   }
 
   const editHandler = (e) => {
@@ -258,6 +250,16 @@ const ProductScreen = () => {
                         value={countInStock}
                         className='form-control '
                         placeholder='Enter product count in stock'
+                      />
+                    </div>
+
+                    <div className='form-group'>
+                      <label htmlFor='file'>Image Upload </label>
+
+                      <input
+                        type='file'
+                        className='form-file-input form-control'
+                        onChange={(e) => setImage(e.target.files[0])}
                       />
                     </div>
 

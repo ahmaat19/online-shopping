@@ -74,11 +74,6 @@ export const updateOrder = asyncHandler(async (req, res) => {
       res.status(404)
       throw new Error('Order not found')
     }
-
-    res.status(201).json(updatedOrder)
-  } else {
-    res.status(404)
-    throw new Error('Order not found')
   }
 })
 

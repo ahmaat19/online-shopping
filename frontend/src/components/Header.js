@@ -14,11 +14,6 @@ const Header = () => {
   const authLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
       <li className='nav-tem'>
-        <Link to='/order' className='nav-link'>
-          Order
-        </Link>
-      </li>
-      <li className='nav-tem'>
         <Link to='/cart' className='nav-link'>
           Cart
         </Link>
@@ -63,6 +58,11 @@ const Header = () => {
               <li>
                 <Link to='/admin/product' className='dropdown-item'>
                   Product
+                </Link>
+              </li>
+              <li>
+                <Link to='/order' className='dropdown-item'>
+                  Order
                 </Link>
               </li>
               <li>

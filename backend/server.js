@@ -3,6 +3,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import morgan from 'morgan'
+import fileUpload from 'express-fileupload'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import userRoutes from './routes/userRoutes.js'
@@ -14,6 +15,7 @@ dotenv.config()
 connectDB()
 
 const app = express()
+app.use(fileUpload())
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
@@ -26,6 +28,7 @@ app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 
 const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')))

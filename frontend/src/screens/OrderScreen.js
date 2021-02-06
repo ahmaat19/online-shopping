@@ -50,10 +50,10 @@ const OrderScreen = () => {
 
   useEffect(() => {
     dispatch(getOrders())
-    if (successDelete) {
+    if (successDelete || successUpdate) {
       formCleanHandler()
     }
-  }, [dispatch, successDelete])
+  }, [dispatch, successDelete, successUpdate])
 
   const deleteHandler = (id) => {
     confirmAlert(Confirm(() => dispatch(deleteOrder(id))))
@@ -192,20 +192,6 @@ const OrderScreen = () => {
               </tbody>
             </table>
           </div>
-          <OrderEditScreen
-            submitHandler={submitHandler}
-            mobile={mobile}
-            discountAmount={discountAmount}
-            paidAmount={paidAmount}
-            orderItems={totalPrice}
-            setMobile={setMobile}
-            setDiscountAmount={setDiscountAmount}
-            setPaidAmount={setPaidAmount}
-            errorUpdate={errorUpdate}
-            loadingUpdate={loadingUpdate}
-            formCleanHandler={formCleanHandler}
-            successUpdate={successUpdate}
-          />
         </div>
       )}
       <div className='d-flex justify-content-center'>
@@ -216,6 +202,20 @@ const OrderScreen = () => {
           itemsPerPage={itemsPerPage}
         />
       </div>
+      <OrderEditScreen
+        submitHandler={submitHandler}
+        mobile={mobile}
+        discountAmount={discountAmount}
+        paidAmount={paidAmount}
+        orderItems={totalPrice}
+        setMobile={setMobile}
+        setDiscountAmount={setDiscountAmount}
+        setPaidAmount={setPaidAmount}
+        errorUpdate={errorUpdate}
+        loadingUpdate={loadingUpdate}
+        formCleanHandler={formCleanHandler}
+        successUpdate={successUpdate}
+      />
     </>
   )
 }
