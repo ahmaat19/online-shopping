@@ -6,7 +6,10 @@ const Footer = () => {
       <div className='container'>
         <div className='row'>
           <div className='col text-center py-3 text-light'>
-            Copyright &copy; Ahmed
+            Copyright &copy;{' '}
+            <a href='https://ahmaat.tk' target='blank'>
+              Ahmed
+            </a>
           </div>
         </div>
       </div>

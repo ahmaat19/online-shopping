@@ -112,36 +112,34 @@ const ReportScreen = () => {
           <div className='row'>
             <div className='mx-auto col-lg-8 col-md-8 col-sm-12 col-12'>
               <div className='card'>
-                <div className='card-header'>Orders</div>
+                <div className='card-header bg-secondary'>Transactions</div>
                 <ul className='list-group list-group-flush'>
                   <li className='list-group-item'>
-                    No. of Orders: {noOfOrders}
+                    Transactions: {noOfOrders}
                   </li>
                   <li className='list-group-item'>
-                    No. of Subtotal Orders: ${noOfSubTotalOrders}
+                    Subtotal Transactions: ${noOfSubTotalOrders}
                   </li>
                   <li className='list-group-item'>
-                    No. of Discount Orders: ${noOfDiscountOrders}
+                    Discount Transactions: ${noOfDiscountOrders}
                   </li>
                   <li className='list-group-item'>
-                    No. of Paid Amount Orders: ${noOfPaidAmountOrders}
+                    Paid Amount Transactions: ${noOfPaidAmountOrders}
                   </li>
                   <li className='list-group-item'>
-                    No. of Balance / Loans: $
+                    Balance / Loans: $
                     {noOfTotalOrders -
                       noOfPaidAmountOrders -
                       noOfDiscountOrders}
                   </li>
-                  <li className='list-group-item'>
-                    No. of Profit: ${totalProfit}
-                  </li>
+                  <li className='list-group-item'>Profit: ${totalProfit}</li>
                 </ul>
               </div>
             </div>
 
             <div className='mx-auto col-lg-8 col-md-8 col-sm-12 col-12'>
               <div className='card'>
-                <div className='card-header'>Products</div>
+                <div className='card-header bg-secondary'>Products</div>
                 <ul className='list-group list-group-flush'>
                   <li className='list-group-item'>
                     Products In Out Of Stock: {totalProductsOutOfStock.length}
